@@ -33,12 +33,14 @@ function addNewEmployee(event) {
     employees.push(newEmployee);
     console.log('array:', employees);
     
+    // empty inputs
     $('#in-first').val(''),
     $('#in-last').val(''),
     $('#in-id').val(''),
     $('#in-title').val(''),
     $('#in-salary').val('')
 
+    //call to display employees in table
     showEmployees(employees);
 } // end addNewEmplopyee    
 
@@ -51,8 +53,15 @@ function showEmployees(array) {
     // loop through the array
     for (let employee of array) {
         //for each movie append a list item with title and genre
-        $('#employee-table').append(`<tr><td>${employee.first}</td>, <td>${employee.last}</td>,
-            <td>${employee.id}</td>, <td>${employee.title}</td>, <td>${employee.salary}</td>`);
+        $('#employee-table').append(`
+                                    <tr>
+                                    <td>${employee.first}</td>, 
+                                    <td>${employee.last}</td>,
+                                    <td>${employee.id}</td>, 
+                                    <td>${employee.title}</td>, 
+                                    <td>${employee.salary}</td>
+                                    </tr>
+                                    `);
     }
 }   
 
@@ -61,13 +70,17 @@ function showEmployees(array) {
 
 function totalMonthly() {
     console.log('in totalMonthly');
-    let count = 0;
-    for (let i=0; i < employees.length; i++) {
-        count += employees[i].salary;
-    } // end for
+    let sum = 0;
+    for (let i = 0; i < employees.length; i++) {
+        sum += Number(employees[i].salary);
+    // end for
     $('#sumTotal').empty();
-    $('#sumTotal').text(count);    
-}// end totalMonthly
+    $('#sumTotal').text(sum); 
+    } // end for
+    if (sum > 20000) {
+        $('#sumTotal').css("background-color", "red");
+    } //end if  
+} // end totalMonthly
 
 
 
