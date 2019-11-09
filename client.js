@@ -2,8 +2,15 @@ console.log('JS');
 
 $(document).ready(onReady);
 
+function onReady() {
+    $('#add-employee').on('click', addNewEmployee);
+} //end onReady
+
 //The application should have an input form that collects employee first name, last name, 
 //ID number, job title, annual salary.
+
+//A 'Submit' button should collect the form information, store the information to calculate
+// monthly costs, append information to the DOM and clear the input fields.
 
 //Make array
 let employees = [];
@@ -31,15 +38,26 @@ function addNewEmployee(event) {
     $('#in-title').val(''),
     $('#in-salary').val('')
 
+    showEmployees(employees);
+} // end addNewEmplopyee    
 
-    showMovies(movies);
+// Show all the movies on the DOM
+function showEmployees(array) {
+    // empty out all the movies from the table
+    $('#employee-table').empty();
+    // loop through the array
+    for (let employee of array) {
+        //for each movie append a list item with title and genre
+        $('#employee-table').append(`<tr><td>${employees.first}</td>, <td>${employees.last}</td>,
+            <td>${employees.id}</td>,<td>${employees.title}</td>,<td>${employees.salary}</td>`);
+    }
+}   
 
-}    
 
-//A 'Submit' button should collect the form information, store the information to calculate
-// monthly costs, append information to the DOM and clear the input fields.Using the stored 
-//information, calculate monthly costs and append this to the to DOM.If the total monthly 
-//cost exceeds $20, 000, add a red background color to the total monthly cost.
+
+
+//Using the stored information, calculate monthly costs and append this to the to DOM.If the 
+//total monthly cost exceeds $20, 000, add a red background color to the total monthly cost.
 
 //Create a delete button that removes an employee from the DOM.For Base mode, it does not need
 //to remove that Employee's salary from the reported total.
