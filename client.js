@@ -4,6 +4,7 @@ $(document).ready(onReady);
 
 function onReady() {
     $('#add-employee').on('click', addNewEmployee);
+    $('#add-employee').on('click', totalMonthly);
 } //end onReady
 
 //The application should have an input form that collects employee first name, last name, 
@@ -26,7 +27,7 @@ function addNewEmployee(event) {
         last: $('#in-last').val(),
         id: $('#in-id').val(),
         title: $('#in-title').val(),
-        Salary: $('#in-salary').val()
+        salary: $('#in-salary').val()
     } //end object
     // make an object into array
     employees.push(newEmployee);
@@ -41,23 +42,34 @@ function addNewEmployee(event) {
     showEmployees(employees);
 } // end addNewEmplopyee    
 
-// Show all the movies on the DOM
+// Show all the employees on the DOM
 function showEmployees(array) {
+    console.log('in showEmployees');
+    
     // empty out all the movies from the table
     $('#employee-table').empty();
     // loop through the array
     for (let employee of array) {
         //for each movie append a list item with title and genre
-        $('#employee-table').append(`<tr><td>${employees.first}</td>, <td>${employees.last}</td>,
-            <td>${employees.id}</td>,<td>${employees.title}</td>,<td>${employees.salary}</td>`);
+        $('#employee-table').append(`<tr><td>${employee.first}</td>, <td>${employee.last}</td>,
+            <td>${employee.id}</td>, <td>${employee.title}</td>, <td>${employee.salary}</td>`);
     }
 }   
 
-
-
-
 //Using the stored information, calculate monthly costs and append this to the to DOM.If the 
 //total monthly cost exceeds $20, 000, add a red background color to the total monthly cost.
+
+function totalMonthly() {
+    console.log('in totalMonthly');
+    let count = 0;
+    for (let i=0; i < employees.length; i++) {
+        count += employees[i].salary;
+    } // end for
+    $('#sumTotal').empty();
+    $('#sumTotal').text(count);    
+}// end totalMonthly
+
+
 
 //Create a delete button that removes an employee from the DOM.For Base mode, it does not need
 //to remove that Employee's salary from the reported total.
