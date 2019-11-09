@@ -5,6 +5,8 @@ $(document).ready(onReady);
 function onReady() {
     $('#add-employee').on('click', addNewEmployee);
     $('#add-employee').on('click', totalMonthly);
+    $('#employee-table').on('click', '.delete', removeEmployee);
+
 } //end onReady
 
 //The application should have an input form that collects employee first name, last name, 
@@ -60,6 +62,7 @@ function showEmployees(array) {
                                     <td>${employee.id}</td>, 
                                     <td>${employee.title}</td>, 
                                     <td>${employee.salary}</td>
+                                    <td> <button class="delete">Delete</button> </td>
                                     </tr>
                                     `);
     }
@@ -82,7 +85,19 @@ function totalMonthly() {
     } //end if  
 } // end totalMonthly
 
-
-
 //Create a delete button that removes an employee from the DOM.For Base mode, it does not need
 //to remove that Employee's salary from the reported total.
+
+function removeEmployee() {
+    console.log('removeEmployee');
+
+    //figure out which row clicked
+    console.log('this is:', this); // this is the button clicked on
+
+    // take it off DOM
+    let button = $(this);
+    //button.parent().parent().remove() // button.parent is td, td's parent is tr
+
+    // this is safer than above
+    button.closest('tr').remove(); // gets the closest tr parent
+}
