@@ -9,51 +9,64 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
         <script src="jquery-3.4.1.min.js"></script>
         <script src="client.js"></script>
     </head>
     <body>
         <header>
-            <h1>Salary Calculator</h1>
+            <h1 class="text-center">Salary Calculator</h1>
         </header>
-        <main>
+        <main class="container">
             <section>
                 <h2>Add Employee</h2>
                 <form>
-                    <div class="form-group">
-                        <input class="form-control" type="text" id="in-first" placeholder="First Name" />
-                        <input class="form-control" type="text" id="in-last" placeholder="Last Name" />
-                        <input class="form-control" type="number" id="in-id" placeholder="ID" />
-                        <input class="form-control" type="text" id="in-title" placeholder="Title" />
-                        <input class="form-control" type="number" id="in-salary" placeholder="Annual Salary" />
+                    <div class="form-row">
+                        <div class="col">
+                            <input class="form-control" type="text" id="in-first" placeholder="First Name" />
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="text" id="in-last" placeholder="Last Name" />
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="number" id="in-id" placeholder="ID" />
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="text" id="in-title" placeholder="Title" />
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="number" id="in-salary" placeholder="Annual Salary" />
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="add-employee">Submit</button>
+                    <button type="submit" class="btn btn-warning" id="add-employee">Submit</button>
             </section>
 
             <section>
-                <h2>Employees</h2>
-                <table class="table">
+                <h2 id="emp-header">Employees</h2>
+                <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Annual Salary</th>
-                            <th>&nbsp;</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Annual Salary</th>
+                            <th scope="col">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody id="employee-table">
                         <!-- jQuery will fill this in... -->
                     </tbody>
                 </table>
+                
+                <div id="totally">
+                    <label>Total Monthly: $</label>
+                    <span id="sumTotal">0</span>
+                </div>
             </section>
 
-            <section>
-                <label>Total Monthly: $</label>
-                <span id="sumTotal">0</span>
-            </section>
+            
         </main>
         
         

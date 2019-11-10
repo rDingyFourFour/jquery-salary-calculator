@@ -1,0 +1,32 @@
+.container {
+    padding: 1em;
+}
+
+.form-control {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#add-employee {
+    float: right;
+    margin-bottom: 50px;
+
+}
+
+#emp-header {
+    margin-top: 50px;
+}
+
+header {
+   background-color: black;
+   color: white;
+   padding: 1em;
+   margin-bottom: 1em;
+}
+
+#totally {
+    text-align: right;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 24px
+}

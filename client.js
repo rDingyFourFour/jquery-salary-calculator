@@ -80,7 +80,7 @@ function totalMonthly() {
     $('#sumTotal').empty();
     $('#sumTotal').text(sum); 
     } // end for
-    if (sum > 20000) {
+    if (sum >= 20000) {
         $('#sumTotal').css("background-color", "red");
     } //end if  
 } // end totalMonthly
@@ -90,14 +90,9 @@ function totalMonthly() {
 
 function removeEmployee() {
     console.log('removeEmployee');
-
     //figure out which row clicked
     console.log('this is:', this); // this is the button clicked on
-
     // take it off DOM
     let button = $(this);
-    //button.parent().parent().remove() // button.parent is td, td's parent is tr
-
-    // this is safer than above
     button.closest('tr').remove(); // gets the closest tr parent
-}
+} //end removeEmployee
