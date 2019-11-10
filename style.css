@@ -8,9 +8,8 @@
 }
 
 #add-employee {
-    float: right;
     margin-bottom: 50px;
-
+    float: right
 }
 
 #emp-header {
