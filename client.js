@@ -60,7 +60,7 @@ function showEmployees(array) {
                                     <td>${employee.last}</td>,
                                     <td>#${employee.id}</td>, 
                                     <td>${employee.title}</td>, 
-                                    <td>$${currency(employee.salary, { useVedic: true }).format()}</td>
+                                    <td>$${numberWithCommas(employee.salary)}</td>
                                     <td> <button class="delete btn btn-outline-primary">Delete</button> </td>
                                     </tr>
                                     `);
@@ -72,15 +72,15 @@ function showEmployees(array) {
 
 function totalMonthly() {
     console.log('in totalMonthly');
-    let sum = 0;
+    let totalAnnual = 0;
     for (let i = 0; i < employees.length; i++) {
-        sum += Number(employees[i].salary);
-    // end for
-    $('#sumTotal').empty();
-        let moMoney = currency(sum, { useVedic: true }).format();
-    $('#sumTotal').text(moMoney); 
+        totalAnnual += Number(employees[i].salary);
     } // end for
-    if (sum >= 20000) {
+    let totalMonthly = (totalAnnual / 12);
+    let moMoney = numberWithCommas(totalMonthly.toFixed(2));
+    $('#sumTotal').empty();
+    $('#sumTotal').text(moMoney); 
+    if (totalMonthly >= 20000) {
         $('#sumTotal').css("background-color", "red");
     } //end if  
 } // end totalMonthly
@@ -98,14 +98,6 @@ function removeEmployee() {
 } //end removeEmployee
 
 function numberWithCommas(x) {
-    return (x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-} //end numberwithcommas
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
-//function numberWithCommas(x) {
-  //  let money = (x.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
-    //return currency(money)
-//} //end numberwithcommas
-
-//function insertDecimal(num) {
-  //  return (num / 100).toFixed(2);
-//}
